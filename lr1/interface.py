@@ -1,0 +1,85 @@
+from tkinter import *  
+from lsp1 import zlp_solver
+
+  
+def clicked():
+    try:
+        result = f"{zlp_solver(int(txt1.get()), int(txt2.get()), int(txt3.get()), int(txt4.get()), int(txt5.get()), int(txt6.get()), int(txt7.get()), int(txt8.get()), int(txt9.get()), int(txt10.get()), int(txt11.get()), int(txt12.get()), int(txt13.get()), int(txt14.get()), int(txt15.get()), int(txt16.get()), int(txt17.get()), int(txt18.get()), int(txt19.get()))}" #.format(txt1.get())
+        res.configure(text=result)
+    except Exception as e:
+        result = f"Ответ {e}"
+        res.configure(text=result)
+
+
+window = Tk()  
+window.title("Лабораторная 1")  
+window.geometry('640x480')
+
+row1 = Label(window, text="Тип оборудования")
+row1.grid(column=0, row=0)
+row2 = Label(window, text="Фрезерное")
+row2.grid(column=0, row=1)
+row3 = Label(window, text="Токарное")
+row3.grid(column=0, row=2)
+row4 = Label(window, text="Сварочное")
+row4.grid(column=0, row=3)
+row5 = Label(window, text="Шлифовальное")
+row5.grid(column=0, row=4)
+row6 = Label(window, text="Прибыль (руб.)")
+row6.grid(column=0, row=5)
+
+col1 = Label(window, text="A")
+col1.grid(column=1, row=0)
+col2 = Label(window, text="B")
+col2.grid(column=2, row=0)
+col3 = Label(window, text="C")
+col3.grid(column=3, row=0)
+col4 = Label(window, text="Время(ч)")
+col4.grid(column=4, row=0)
+
+txt1 = Entry(window,width=5)
+txt1.grid(column=1, row=1)
+txt2 = Entry(window,width=5)
+txt2.grid(column=2, row=1)
+txt3 = Entry(window,width=5)
+txt3.grid(column=3, row=1)
+txt4 = Entry(window,width=5)
+txt4.grid(column=1, row=2)
+txt5 = Entry(window,width=5)
+txt5.grid(column=2, row=2)
+txt6 = Entry(window,width=5)
+txt6.grid(column=3, row=2)
+txt7 = Entry(window,width=5)
+txt7.grid(column=1, row=3)
+txt8 = Entry(window,width=5)
+txt8.grid(column=2, row=3)
+txt9 = Entry(window,width=5)
+txt9.grid(column=3, row=3)
+txt10 = Entry(window,width=5)
+txt10.grid(column=1, row=4)
+txt11 = Entry(window,width=5)
+txt11.grid(column=2, row=4)
+txt12 = Entry(window,width=5)
+txt12.grid(column=3, row=4)
+txt13 = Entry(window,width=5)
+txt13.grid(column=1, row=5)
+txt14 = Entry(window,width=5)
+txt14.grid(column=2, row=5)
+txt15 = Entry(window,width=5)
+txt15.grid(column=3, row=5)
+
+txt16 = Entry(window,width=5)
+txt16.grid(column=4, row=1)
+txt17 = Entry(window,width=5)
+txt17.grid(column=4, row=2)
+txt18 = Entry(window,width=5)
+txt18.grid(column=4, row=3)
+txt19 = Entry(window,width=5)
+txt19.grid(column=4, row=4)
+
+res = Label(window, text="Ответ:")
+res.grid(column=0, row=7)
+
+btn = Button(window, text="Результат", command=clicked)
+btn.grid(column=2, row=6)
+window.mainloop()
