@@ -1,2 +1,6 @@
 __pycache__/lsp1.cpython-39.pyc
 lr1/__pycache__/lsp1.cpython-39.pyc
+.env
+.venv
+env/
+venv/
