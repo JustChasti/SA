@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pylab as pl
 import csv
 import ot
+from ot import plot
 
 n = 100  # строк
 
@@ -18,9 +19,9 @@ a2 = pd.DataFrame(data2, columns=[6, 7])
 xs = np.array(a1)
 xt = np.array(a2)
 
-# Сбалансировать размерности выборок
+
 a = np.ones((n,)) / n  # нормализация
-b = np.ones((n,)) / n  # массивы по 1 сотой
+b = np.ones((n,)) / n  # cjplftv массивы по 1 сотой lkz a-bb lfkmit
 
 # 3. График местоположений пунктов назначения и расположений машин такси
 pl.figure(1)
@@ -46,31 +47,30 @@ pl.figure(3)
 pl.imshow(G0, interpolation='nearest')
 pl.title('OT matrix G0')
 
-# Фигура 4 Соответствия между Такси и Отелем (оптимальные расстояния)
+# 6. Исходя из полученных данных местоположений отелей и машин отобразите оптимальные расстояния
 pl.figure(4)
 ot.plot.plot2D_samples_mat(xs, xt, G0, c=[.5, .5, 1])
 pl.plot(xs[:, 0], xs[:, 1], '+b', label='Source samples')
 pl.plot(xt[:, 0], xt[:, 1], 'xr', label='Target samples')
 pl.legend(loc=0)
 pl.title('OT matrix with samples')
-# Вычисляются значения для задания 7
+
+# 7. Сформируйте датафрейм, содержащий данные по оптимальным местоположениям отелей и такси
 table = []
 table2 = []
 i = 0
 j = 0
 while j < n:
     while i < n:
-        if G0[i, j] > 0:
+        if G0[i, j] > 0:  # значит что между точками проложенно перемещение, если не проложенно, то там 0
             table.append([i, j])
         i = i + 1
     table2.append(table)
     i = 0
     j = j + 1
 
-print(type(table2))
-
 pl.show()
-# 7. Сформируйте датафрейм, содержащий данные по оптимальным местоположениям отелей и такси (id отеля, id такси)
+
 with open('transition_matrix.csv', "w", newline="") as f:
     writer = csv.writer(f, delimiter=';')
     writer.writerows(table)
