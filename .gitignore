@@ -4,3 +4,6 @@ lr1/__pycache__/lsp1.cpython-39.pyc
 .venv
 env/
 venv/
+new_york_hotels.csv
+transition_matrix.csv
+US_Accidents_Dec19.csv
